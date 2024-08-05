@@ -45,7 +45,10 @@ namespace ShareX.HelpersLib
         private const string Docs = Website + "/docs";
         public const string DocsCustomUploader = Docs + "/custom-uploader";
         public const string DocsKeybinds = Docs + "/keybinds";
+
+
         public const string DocsOCR = Docs + "/ocr";
         public const string DocsScrollingScreenshot = Docs + "/scrolling-screenshot";
+        public const string DocsEditScreenshot =  "/edit-screenshot";
     }
 }
