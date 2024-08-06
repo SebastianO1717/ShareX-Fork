@@ -23,7 +23,6 @@
 
 #endregion License Information (GPL v3)
 
-using ShareX.HelpersLib;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -35,6 +34,22 @@ namespace ShareX
         public string Name { get; set; }
         public AfterCaptureTasks AfterCaptureTasks { get; set; }
         public AfterUploadTasks AfterUploadTasks { get; set; }
+
+        public bool IsEmpty
+        {
+            get
+            {
+                return AfterCaptureTasks == AfterCaptureTasks.None;
+            }
+        }
+
+        public bool IsUploadTask
+        {
+            get
+            {
+                return AfterCaptureTasks.HasFlag(AfterCaptureTasks.UploadImageToHost);
+            }
+        }
 
         public bool IsValid
         {
