@@ -28,7 +28,7 @@ using System;
 
 namespace ShareX
 {
-    public class OldItems
+    public class NewItems
     {
         public DateTime DateTime { get; set; }
         public string Text { get; set; }

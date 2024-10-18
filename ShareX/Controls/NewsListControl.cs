@@ -84,7 +84,7 @@ namespace ShareX
             {
                 SuspendLayout();
 
-                foreach (OldItems item in NewsManager.NewsItems)
+                foreach (NewItems item in NewsManager.NewsItems)
                 {
                     if (item != null)
                     {
@@ -122,7 +122,7 @@ namespace ShareX
             UpdateUnreadStatus();
         }
 
-        public void AddNewsItem(OldItems item)
+        public void AddNewsItem(NewItems item)
         {
             int index = dgvNews.Rows.Add();
             DataGridViewRow row = dgvNews.Rows[index];
@@ -160,7 +160,7 @@ namespace ShareX
         {
             foreach (DataGridViewRow row in dgvNews.Rows)
             {
-                if (row.Tag is OldItems newsItem && newsItem.IsUnread)
+                if (row.Tag is NewItems newsItem && newsItem.IsUnread)
                 {
                     row.Cells[0].Style.BackColor = row.Cells[0].Style.SelectionBackColor = Color.LimeGreen;
                 }
@@ -176,7 +176,7 @@ namespace ShareX
             if (e.ColumnIndex == 2)
             {
                 DataGridViewRow row = dgvNews.Rows[e.RowIndex];
-                if (row.Tag is OldItems newsItem && !string.IsNullOrEmpty(newsItem.URL))
+                if (row.Tag is NewItems newsItem && !string.IsNullOrEmpty(newsItem.URL))
                 {
                     dgvNews.Cursor = Cursors.Hand;
                     row.Cells[e.ColumnIndex].Style.ForeColor = row.Cells[e.ColumnIndex].Style.SelectionForeColor =
@@ -190,7 +190,7 @@ namespace ShareX
             if (e.ColumnIndex == 2)
             {
                 DataGridViewRow row = dgvNews.Rows[e.RowIndex];
-                if (row.Tag is OldItems newsItem && !string.IsNullOrEmpty(newsItem.URL))
+                if (row.Tag is NewItems newsItem && !string.IsNullOrEmpty(newsItem.URL))
                 {
                     row.Cells[e.ColumnIndex].Style.ForeColor = row.Cells[e.ColumnIndex].Style.SelectionForeColor =
                         ShareXResources.UseCustomTheme ? ShareXResources.Theme.TextColor : SystemColors.ControlText;
@@ -205,7 +205,7 @@ namespace ShareX
             if (e.Button == MouseButtons.Left && e.ColumnIndex == 2)
             {
                 DataGridViewRow row = dgvNews.Rows[e.RowIndex];
-                if (row.Tag is OldItems newsItem && URLHelpers.IsValidURL(newsItem.URL))
+                if (row.Tag is NewItems newsItem && URLHelpers.IsValidURL(newsItem.URL))
                 {
                     URLHelpers.OpenURL(newsItem.URL);
                 }
