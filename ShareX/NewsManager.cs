@@ -35,7 +35,7 @@ namespace ShareX
 {
     public class NewsManager
     {
-        public List<NewsItem> NewsItems { get; private set; } = new List<NewsItem>();
+        public List<NewItems> NewsItems { get; private set; } = new List<NewItems>();
         public DateTime LastReadDate { get; set; }
         public bool IsUnread => UnreadCount > 0;
         public int UnreadCount => NewsItems != null ? NewsItems.Count(x => x.IsUnread) : 0;
@@ -56,14 +56,14 @@ namespace ShareX
         {
             if (NewsItems != null)
             {
-                foreach (NewsItem newsItem in NewsItems)
+                foreach (NewItems newsItem in NewsItems)
                 {
                     newsItem.IsUnread = newsItem.DateTime > LastReadDate;
                 }
             }
         }
 
-        private async Task<List<NewsItem>> GetNews()
+        private async Task<List<NewItems>> GetNews()
         {
             string url = URLHelpers.CombineURL(Links.Website, "news.json");
             string response = await WebHelpers.DownloadStringAsync(url);
@@ -75,13 +75,13 @@ namespace ShareX
                     DateTimeZoneHandling = DateTimeZoneHandling.Local
                 };
 
-                return JsonConvert.DeserializeObject<List<NewsItem>>(response, settings);
+                return JsonConvert.DeserializeObject<List<NewItems>>(response, settings);
             }
 
             return null;
         }
 
-        private void ExportNews(List<NewsItem> newsItems)
+        private void ExportNews(List<NewItems> newsItems)
         {
             JsonSerializerSettings settings = new JsonSerializerSettings
             {
